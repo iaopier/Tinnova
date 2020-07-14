@@ -12,13 +12,15 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name = "TB_VEICULO")
-public class Veiculo {
+public class VeiculoModel {
 	@Column
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long idProduto;
+	private long id;
 	@Column
 	private String veiculo;
 	@Column
@@ -33,9 +35,14 @@ public class Veiculo {
 	@Column
 	private Date created;
 	@Column
+	@UpdateTimestamp
 	private Date updated;
 
-	public Veiculo(String veiculo, String marca, int ano, String descricao, boolean vendido, Date created,
+	public VeiculoModel() {
+		super();
+	}
+	
+	public VeiculoModel(String veiculo, String marca, int ano, String descricao, boolean vendido, Date created,
 			Date updated) {
 		super();
 		this.veiculo = veiculo;
@@ -102,5 +109,15 @@ public class Veiculo {
 	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	
 
 }
